@@ -16,11 +16,7 @@ interface PCLayoutProps {
 // Common layout for PC display
 // Layout with common parts like headers and footers
 const PCLayout: React.FC<PCLayoutProps> = (props: PCLayoutProps) => {
-  
-  const {
-    children,
-    meta,
-  } = props
+  const { children, meta } = props;
 
   const [open, setOpen] = React.useState(false);
   const drawerWidth = 240;
@@ -33,14 +29,14 @@ const PCLayout: React.FC<PCLayoutProps> = (props: PCLayoutProps) => {
     <div>
       <ThemeProvider theme={theme}>
         <CommonHeadTag meta={meta} />
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: "flex" }}>
           <CssBaseline />
           <CommonAppBar
             open={open}
             drawerWidth={drawerWidth}
             toggleDrawer={toggleDrawer}
           />
-          <CommonDrawer 
+          <CommonDrawer
             open={open}
             drawerWidth={drawerWidth}
             toggleDrawer={toggleDrawer}

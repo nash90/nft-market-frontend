@@ -1,15 +1,14 @@
 import React from "react";
 import type { NextPage } from "next";
 import PCLayout from "../src/components/layouts/PCLayout";
-import {Box, Container, Grid, Paper, Toolbar } from "@mui/material";
+import { Box, Container, Grid, Paper, Toolbar } from "@mui/material";
 import { Copyright } from "@mui/icons-material";
 import { HeadTagMeta } from "../src/components/layouts/CommonHeadTag";
 
-
 const Home: NextPage = () => {
   const meta: HeadTagMeta = {
-    title: "Index Page"
-  }
+    title: "Index Page",
+  };
 
   return (
     <>
@@ -18,12 +17,12 @@ const Home: NextPage = () => {
           component="main"
           sx={{
             backgroundColor: (theme) =>
-              theme.palette.mode === 'light'
+              theme.palette.mode === "light"
                 ? theme.palette.grey[100]
                 : theme.palette.grey[900],
             flexGrow: 1,
-            height: '100vh',
-            overflow: 'auto',
+            height: "100vh",
+            overflow: "auto",
           }}
         >
           <Toolbar />
@@ -34,8 +33,8 @@ const Home: NextPage = () => {
                 <Paper
                   sx={{
                     p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
+                    display: "flex",
+                    flexDirection: "column",
                     height: 240,
                   }}
                 >
@@ -47,8 +46,8 @@ const Home: NextPage = () => {
                 <Paper
                   sx={{
                     p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
+                    display: "flex",
+                    flexDirection: "column",
                     height: 240,
                   }}
                 >
@@ -57,7 +56,7 @@ const Home: NextPage = () => {
               </Grid>
               {/* Recent Orders */}
               <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
                   Space 3
                 </Paper>
               </Grid>
@@ -71,5 +70,3 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-
-
