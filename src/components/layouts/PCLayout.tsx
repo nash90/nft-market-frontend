@@ -1,5 +1,9 @@
-import Container from "@mui/material/Container";
+import React from "react";
+import { Box, CssBaseline } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+import CommonAppBar from "../common/CommonAppBar";
+import CommonDrawer from "../common/CommonDrawer";
 import CommonHeadTag, { HeadTagMeta } from "./CommonHeadTag";
 
 const theme = createTheme();
@@ -18,13 +22,31 @@ const PCLayout: React.FC<PCLayoutProps> = (props: PCLayoutProps) => {
     meta,
   } = props
 
+  const [open, setOpen] = React.useState(false);
+  const drawerWidth = 240;
+
+  const toggleDrawer = () => {
+    setOpen(!open);
+  };
+
   return (
     <div>
       <ThemeProvider theme={theme}>
         <CommonHeadTag meta={meta} />
-        <Container component="main" maxWidth="xs">
+        <Box sx={{ display: 'flex' }}>
+          <CssBaseline />
+          <CommonAppBar
+            open={open}
+            drawerWidth={drawerWidth}
+            toggleDrawer={toggleDrawer}
+          />
+          <CommonDrawer 
+            open={open}
+            drawerWidth={drawerWidth}
+            toggleDrawer={toggleDrawer}
+          />
           {children}
-        </Container>
+        </Box>
       </ThemeProvider>
     </div>
   );
