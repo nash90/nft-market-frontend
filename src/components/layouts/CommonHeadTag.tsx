@@ -24,6 +24,7 @@ const CommonHeadTag: React.FC<HeadTagProps> = (props: HeadTagProps) => {
       <Head>
         <title>{title}</title>
         <meta name={description} content={content} />
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
     </div>

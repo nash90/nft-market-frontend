@@ -55,7 +55,7 @@ const CommonAppBar: React.FC<AppBarProps> = (props: AppBarProps) => {
           noWrap
           sx={{ flexGrow: 1 }}
         >
-          Dashboard
+          YAMACITY
         </Typography>
         <Button variant="outlined" color="inherit">
           Wallet

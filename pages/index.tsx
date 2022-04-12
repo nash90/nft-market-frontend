@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import type { NextPage } from "next";
 import PCLayout from "../src/components/layouts/PCLayout";
 import { Box, Container, Grid, Paper, Toolbar } from "@mui/material";
 import { Copyright } from "@mui/icons-material";
 import { HeadTagMeta } from "../src/components/layouts/CommonHeadTag";
+import { useNFTCollectionContext } from "../src/store/contexts/NFTCollectionContext";
+import CardList from "../src/components/card/CardList";
+import { getPopularCollections } from "../src/store/api/NFTCollectionApi";
+import { NFTCollectionActionType } from "../src/store/reducers/NFTCollectionReducer";
 
 const Home: NextPage = () => {
   const meta: HeadTagMeta = {
     title: "Index Page",
   };
+
+  const { nftCollectionStore, dispatch } = useNFTCollectionContext();
+  const popularCollections = nftCollectionStore.popularCollections;
+  console.log("popular collection store state", popularCollections)
+
+  useEffect(() => {
+    const popular = getPopularCollections();
+    console.log("useEffect data", popular)
+    // If api call is success set data
+    if (popular.length > 1) {
+      dispatch({
+        type: NFTCollectionActionType.UPDATE_POPULAR_COLLECTION,
+        data: popular,
+      });
+    } else {
+      // Display Error Message if api call failed or returned error
+    }
+  }, []);
 
   return (
     <>
@@ -57,7 +79,15 @@ const Home: NextPage = () => {
               {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  Space 3
+                  {
+                    popularCollections && popularCollections.length && (
+                    <CardList 
+                      sectionTitle="Popular Collection"
+                      collections={popularCollections}
+                    />
+                    ) 
+                  }
+
                 </Paper>
               </Grid>
             </Grid>
