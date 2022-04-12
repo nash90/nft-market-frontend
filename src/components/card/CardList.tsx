@@ -15,9 +15,9 @@ const CardList: React.FC<CardListProps> = (props: CardListProps) => {
 
   return (
     <>
-      <Container sx={{ py: 8 }} maxWidth="md">
+      <Container id="card-list-container" sx={{ py: 8 }} maxWidth="md">
         <h1>{sectionTitle}</h1>
-        <Grid container spacing={4}>
+        <Grid id="card-list-grid" container spacing={4}>
           {collections.length && collections.map((collection, idx) => {
             return (
               <CustomCard
